@@ -1,0 +1,19 @@
+[project]
+name = "qaguru-autotest-lesson-19"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Viacheslav Suchkov",email = "iexploudi@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "qaguru_autotest_lesson_19", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
