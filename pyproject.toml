@@ -11,7 +11,8 @@ dependencies = [
     "selene (==2.0.0rc9)",
     "allure-pytest (>=2.15.0,<3.0.0)",
     "pytest (>=8.4.1,<9.0.0)",
-    "appium-python-client (==2.6.1)"
+    "appium-python-client (==2.6.1)",
+    "requests (>=2.32.4,<3.0.0)"
 ]
 
 [tool.poetry]
