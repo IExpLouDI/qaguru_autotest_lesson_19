@@ -3,6 +3,14 @@ from appium.options.android import UiAutomator2Options
 from selene import browser
 import os
 from appium import webdriver
+from dotenv import load_dotenv
+
+from src.qaguru_autotest_lesson_19.utils.attachments import *
+
+
+@pytest.fixture(autouse=True)
+def load_env():
+    load_dotenv()
 
 
 @pytest.fixture(scope='function', autouse=True)
@@ -25,8 +33,8 @@ def mobile_management():
             "sessionName": "BStack first_test",  # Название сессии которое будет отображаться в Browserstack
 
             # Set your access credentials
-            "userName": "YOUR_USERNAME",  # Ваш логин в Browserstack
-            "accessKey": "YOUR_ACCESS_KEY"  # Ваш ключ доступа в Browserstack
+            "userName": f'{os.getenv("USER")}',  # Ваш логин в Browserstack
+            "accessKey": f'{os.getenv("KEY")}'  # Ваш ключ доступа в Browserstack
         }
     })
 
@@ -40,6 +48,8 @@ def mobile_management():
     session_id = browser.driver.session_id  # Получаем ID сессии
 
     yield
-
+    add_screenshot(browser)
+    add_xml(browser)
+    add_video(browser.driver.session_id, os.getenv("USER"), os.getenv("KEY"))
     # аттачи
     browser.quit()
